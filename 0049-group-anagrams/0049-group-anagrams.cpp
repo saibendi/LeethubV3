@@ -1,18 +1,24 @@
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string, vector<string>> mp;
-        
-        for(auto x: strs){
-            string word = x;
-            sort(word.begin(), word.end());
-            mp[word].push_back(x);
+        // <sorted letters -> anagrams>
+        unordered_map<string,vector<string>> map;
+        for (auto str : strs) {
+            const string unalteredStr = str;
+            sort(str.begin(), str.end());
+            // if sorted word doesn't already exist in map, add
+            // if (!map.count(str)) {
+                map[str].push_back(unalteredStr);
+            // // }
+            // else {
+            //     map[str].push_back(unalteredStr);
+            // }
         }
-        
-        vector<vector<string>> ans;
-        for(auto x: mp){
-            ans.push_back(x.second);
+
+        vector<vector<string>> res; 
+        for (auto pair : map) {
+            res.push_back(pair.second);
         }
-        return ans;
+        return res; 
     }
 };
