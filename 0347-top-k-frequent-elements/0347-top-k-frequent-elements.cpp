@@ -7,7 +7,7 @@ public:
             map[num]++;
         }
 
-        priority_queue<pair<int,int>, vector<pair<int,int>>, less<pair<int,int>>> pq; 
+        priority_queue<pair<int,int>, vector<pair<int,int>>> pq; 
         for (auto pair : map) {
             //<count, number>
             pq.push({pair.second, pair.first});
